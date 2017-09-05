@@ -26,7 +26,10 @@ class FileGiver
   TYPES = {
     '.txt' => "text/plain",
     '.jpg' => "image/jpeg",
-    '.zip' => "application/zip"
+    '.png' => "image/png",
+    '.zip' => "application/zip",
+    '.htm' => "text/html",
+    '.html' => "text/html"
   }
 
   def initialize(root)

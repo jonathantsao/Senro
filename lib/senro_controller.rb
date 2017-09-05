@@ -4,7 +4,7 @@ require 'erb'
 require_relative './session'
 require_relative './flash'
 
-class ControllerBase
+class SenroController
   attr_reader :req, :res, :params
 
   def initialize(req, res, params = {})

@@ -1,6 +1,6 @@
 # Senro
 
-Senro is a Ruby Controller and Views framework that uses a Postgresql database. Senro was inspired by Ruby on Rails. The term "Senro" is a japanese term for "train line".
+Senro is a Ruby Controller and Views framework that uses a Postgresql database. Senro was inspired by Ruby on Rails. The word "Senro" is a japanese term for "train line".
 
 ## Key Features
 

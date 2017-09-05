@@ -1,6 +1,7 @@
 require 'rack'
 require_relative './lib/senro_controller.rb'
 require_relative './lib/router'
+require_relative './lib/static'
 
 class Food
 
@@ -81,6 +82,7 @@ end
 router = Router.new
 router.draw do
   get Regexp.new("^/foods$"), FoodsController, :index
+  get Regexp.new("^/$"), FoodsController, :index
   get Regexp.new("^/foods/new$"), FoodsController, :new
   post Regexp.new("^/foods$"), FoodsController, :create
 end
@@ -91,6 +93,11 @@ app = Proc.new do |env|
   router.run(req, res)
   res.finish
 end
+
+app = Rack::Builder.new do
+  use Static
+  run app
+end.to_app
 
 Rack::Server.start(
  app: app,

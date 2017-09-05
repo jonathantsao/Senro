@@ -52,7 +52,7 @@ class FileGiver
   private
 
   def file_response(file_name, res)
-    content-type = TYPES[File.extname(file_name)]
+    content_type = TYPES[File.extname(file_name)]
     file = File.read(file_name)
     res["Content-type"] = content_type
     res.write(file)

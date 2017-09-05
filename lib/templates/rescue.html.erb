@@ -1,0 +1,8 @@
+<body>
+  <%= e.class %>: <%= e.message %>
+  <ol>
+  <% e.backtrace.each do |trace| %>
+    <li><%= trace %></li>
+    <% end %>
+  </ol>
+</body>

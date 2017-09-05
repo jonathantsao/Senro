@@ -11,10 +11,10 @@ class Static
   def call(env)
     req = Rack::Request.new(env)
     path = req.path
-    if path.include?("/#{@root}/")
+    if path.include?("/#{root}/")
       res = @file_giver.call(env)
     else
-      res = @app.call(env)
+      res = app.call(env)
     end
 
     res
@@ -37,10 +37,7 @@ class FileGiver
     file_name = file_request(env)
     res = Rack::Response.new
     if File.exist?(file_name)
-      content_type = TYPES[File.extname(file_name)]
-      file = File.read(file_name)
-      res["Content-type"] = content_type
-      res.write(file)
+      file_response(file_name, res)
     else
       res.status = 404
       res.write("File not found")
@@ -50,6 +47,13 @@ class FileGiver
 
 
   private
+
+  def file_response(file_name, res)
+    content-type = TYPES[File.extname(file_name)]
+    file = File.read(file_name)
+    res["Content-type"] = content_type
+    res.write(file)
+  end
 
   def file_request(env)
     req = Rack::Request.new(env)

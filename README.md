@@ -48,5 +48,5 @@ end
 1. `git clone https://www.github.com/jonathantsao/senro.git`
 1. `cd Senro`
 1. `bundle install`
-1. `ruby fruits.rb`
+1. `ruby foods.rb`
 1. Go to `http://localhost:3000`

@@ -31,7 +31,7 @@ class Food
       return false
     end
 
-    unless @amount == 0
+    if @amount == "0"
       errors << "Amount can't be 0"
       return false
     end
@@ -56,7 +56,7 @@ class FoodsController < SenroController
   protect_from_forgery
 
   def create
-    @food = Food.new(params["grocery_list"])
+    @food = Food.new(params["food"])
     if @food.save
       flash[:notice] = "Saved Food successfully"
       redirect_to "/foods"
@@ -75,13 +75,13 @@ class FoodsController < SenroController
     @food = Food.new
     render :new
   end
+
 end
 
 router = Router.new
 router.draw do
   get Regexp.new("^/foods$"), FoodsController, :index
   get Regexp.new("^/foods/new$"), FoodsController, :new
-  get Regexp.new("^/foods/(?<id>\\d+)$"), FoodsController, :show
   post Regexp.new("^/foods$"), FoodsController, :create
 end
 

@@ -1,6 +1,13 @@
 <h1>Add a new food!</h1>
 <img src="/public/food.png"/>
 
+<% if flash.now[:errors] %>
+  <ol>
+    <% flash.now[:errors].each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+  </ol>
+<% end %>
 
 <form action="/foods" method="post">
   <input type="hidden"
